@@ -15,6 +15,11 @@ return [
 
     'defaults' => [
         'guard' => 'web',
+        'passwords' => 'lojas',
+    ],
+	
+	'admin' => [
+        'guard' => 'admin',
         'passwords' => 'users',
     ],
 
@@ -38,13 +43,18 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'lojas',
         ],
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
+        ],
+		
+		'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
     ],
 
@@ -70,11 +80,16 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+		
+		'lojas' => [
+            'driver' => 'eloquent',
+            'model' => App\Loja::class,
+        ],
+		
+         //'users' => [
+            // 'driver' => 'database',
+             //'table' => 'users',
+         //],
     ],
 
     /*
